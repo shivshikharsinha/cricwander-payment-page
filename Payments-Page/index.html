@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments Page | CricetWander</title>
+    <script src="https://kit.fontawesome.com/72d4ba211c.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="cric favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo"> <a href="#"><img src="./Cricwander logo.png" alt=""></a></div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li> 
+                    <a href="" class="active">Home</a>
+                </li>
+                <li> 
+                    <a href="">About</a>
+                </li>
+                <li> 
+                    <a href="">Features</a>
+                </li>
+                <li> 
+                    <a href="">News</a>
+                </li>
+                <li> 
+                    <a href="">Profile</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="flex-container">
+        <div class="box one">
+            <h3 class = "heading">Choose a Payment Method</h3>
+            
+            <div class="payment-option">
+                <div class="option one active" onclick="toggleForm('creditCard')">Credit Card</div>
+                <div class="option two" onclick="toggleForm('debitCard')"> Debit Card</div>
+                <div class="option three" onclick="toggleForm('upi')">UPI</div>
+                <div class="option four" onclick="toggleForm('netBanking')">Net Banking</div>
+            </div>
+            
+            <div class="box one" id="creditCardForm">
+                <form action="">
+    
+                    <label for="number">Card Number:</label><br>
+                    <input name="credit-number" class="cc-number" type="tel" pattern="\d*" maxlength="19" placeholder="XXXX - XXXX- XXXX - XXXX"> <br>
+    
+                    <label for="exp">Expiration Date: </label><br>
+                    <input name="credit-expires" class="cc-expires" type="tel" pattern="\d*" maxlength="7" placeholder="MM/YY"> <br>
+    
+                    <label for="cvv">CVC/CVV Code: <i class="fa-solid fa-circle-info"></i></label><br>
+                    <input name="credit-cvc" class="cc-cvc" type="tel" pattern="\d*" maxlength="4" placeholder="XXX"> <br>
+    
+                    <input type="checkbox" name="tnc"> I agree to the <a href="#">Terms and Conditions</a>. <br>
+                    <input type="submit" class="form-submit" value="Pay Now">
+                    <input type="submit" class="form-cancel" value="Cancel">
+                </form>
+            </div>
+            <div class="box one" id="debitCardForm" style="display: none;">
+                <form action="">
+
+                    <label for="name">Name on the Card: </label><br>
+                    <input type="text" name = "name" placeholder="Shiv Shikhar Sinha"> <br>
+                    
+                    <label for="number">Card Number: </label><br>
+                    <input name="credit-number" class="cc-number" type="tel" pattern="\d*" maxlength="19" placeholder="XXXX - XXXX- XXXX - XXXX"> <br>
+    
+                    <label for="exp">Expiration Date: </label><br>
+                    <input name="credit-expires" class="cc-expires" type="tel" pattern="\d*" maxlength="7" placeholder="MM/YY"> <br>
+    
+                    <label for="cvv">CVC/CVV Code: <i class="fa-solid fa-circle-info"></i></label><br>
+                    <input name="credit-cvc" class="cc-cvc" type="tel" pattern="\d*" maxlength="4" placeholder="XXX"> <br>
+
+    
+                    <input type="checkbox" name="tnc"> I agree to the <a href="">Terms and Conditions</a>. <br>
+                    <input type="submit" class="form-submit" value="Pay Now">
+                    <input type="submit" class="form-cancel" value="Cancel">
+                </form>
+            </div>
+            <div class="box one" id="upiForm" style="display: none;">
+                <form action="">
+
+                    <label for="upiId">UPI ID/ VPA ID: </label><br>
+                    <input name="upiId" class="upiId" type="text" maxlength="15" placeholder="XXXXXXXXXX@abc"> <br>
+    
+    
+                    <input type="checkbox" name="tnc"> I agree to the <a href="">Terms and Conditions</a>. <br>
+                    <input type="submit" class="form-submit" value="Pay Now">
+                    <input type="submit" class="form-cancel" value="Cancel">
+                </form>
+            </div>
+            <div class="box one" id="netBankingForm" style="display: none;">
+                <form action="netbanking_process.php" method="post">
+                    <label for="bank">Select Your Bank:</label> <br>
+                    <select id="bank" name="bank">
+                        <option value="axis">Axis Bank</option>
+                        <option value="boi">Bank of Baroda (BoB)</option>
+                        <option value="canara">Canara Bank</option>
+                        <option value="citi">Citibank</option>
+                        <option value="federal">Federal Bank of India</option>
+                        <option value="hdfc">HDFC Bank</option>
+                        <option value="icici">ICICI Bank</option>
+                        <option value="idbi">IDBI Bank</option>
+                        <option value="indusind">IndusInd Bank</option>
+                        <option value="kotak">Kotak Mahindra Bank</option>
+                        <option value="pnb">Punjab National Bank (PNB)</option>
+                        <option value="sbi">State Bank of India (SBI)</option>
+                        <option value="union">Union Bank of India</option>
+                        <!-- Add more banks as needed -->
+                    </select>
+                    <br>
+                    <label for="userId">User ID:</label> <br>
+                    <input type="text" id="userId" name="userId" required placeholder="userId">
+                    <br>
+                
+                    <label for="password">Password:</label> <br>
+                    <input type="password" id="password" name="password" required placeholder="*******">
+                
+                    <!-- Additional security measures, transaction details, etc. can be added here -->
+                    <br>
+                    <input type="checkbox" name="tnc"> I agree to the <a href="">Terms and Conditions</a>. <br>
+                    <input type="submit" class="form-submit" value="Pay Now">
+                    <input type="submit" class="form-cancel" value="Cancel">
+                </form>
+            </div>
+            
+        </div>
+        <div class="box two">
+            <h3 class="heading">Order Summary</h3>
+            <table id="summary-table">
+                <tr>
+                    <td>Total: </td>
+                    <td>₹ 4000</td>
+                </tr>
+                <tr>
+                    <td>GST: </td>
+                    <td>₹ 720</td>
+                </tr>
+                <tr id="grand-total">
+                    <td>Grand Total: </td>
+                    <td>₹ 4720</td>
+                </tr>
+            </table>
+            <p>Apply Voucher: <br>
+                <input type="text" placeholder="Voucher Code">
+                <input type="submit" value = "Apply">
+            </p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Author: Shiv Shikhar Sinha<br><a href="mailto:shiv.shikhar.3@gmail.com">shiv.shikhar.3@gmail.com</a></p><h4>Temporary Footer</h4>
+    </div>
+<script>
+
+hamburger = document.querySelector(".hamburger");
+hamburger.onclick = function(){
+    navBar = document.querySelector(".nav-bar");
+    navBar.classList.toggle("active");
+}
+
+// Function to toggle between forms
+function toggleForm(formType) {
+    if (formType === 'creditCard') {
+        document.getElementById('creditCardForm').style.display = 'block';
+        document.getElementById('debitCardForm').style.display = 'none';
+        document.getElementById('netBankingForm').style.display = 'none';
+        document.getElementById('upiForm').style.display = 'none';
+    } else if (formType === 'debitCard') {
+        document.getElementById('upiForm').style.display = 'none';
+        document.getElementById('creditCardForm').style.display = 'none';
+        document.getElementById('netBankingForm').style.display = 'none';
+        document.getElementById('debitCardForm').style.display = 'block';
+    }
+    else if (formType === 'upi') {
+        document.getElementById('creditCardForm').style.display = 'none';
+        document.getElementById('debitCardForm').style.display = 'none';
+        document.getElementById('netBankingForm').style.display = 'none';
+        document.getElementById('upiForm').style.display = 'block';
+    }
+    else if (formType === 'netBanking') {
+        document.getElementById('creditCardForm').style.display = 'none';
+        document.getElementById('debitCardForm').style.display = 'none';
+        document.getElementById('upiForm').style.display = 'none';
+        document.getElementById('netBankingForm').style.display = 'block';
+    }
+}
+document.querySelectorAll('.payment-option .option').forEach(function (option) {
+        option.classList.remove('active');
+    });
+</script>
+</body>
+
+</html>
